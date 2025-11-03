@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome 🎉</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+ margin:0; padding:0; font-family:Poppins, sans-serif;
+ background:#ff8fcf;
+ height:100vh; display:flex; justify-content:center; align-items:center;
+ overflow:hidden; color:white; text-align:center;
+}
+
+.welcome{
+ font-size:28px; opacity:0; transform:scale(0.8);
+ animation:pop 3s ease-in-out forwards;
+ text-shadow:0 0 35px white;
+}
+
+@keyframes pop{
+ 0%{opacity:0; transform:scale(0.6);}
+ 50%{opacity:1; transform:scale(1);}
+ 100%{opacity:1; transform:scale(1.05);}
+}
+
+.confetti{
+ position:fixed; top:-10px; font-size:22px;
+ animation:fall 6s linear infinite;
+}
+@keyframes fall{
+ to{ transform:translateY(110vh) rotate(360deg); }
+}
+</style>
+</head>
+<body>
+
+<div class="welcome">🎉 Happy Birthday Brother 🎉</div>
+
+<script>
+// Confetti falling
+const fx=["🎉","🎊","✨","🎂","🥳"];
+function rain(){
+ let e=document.createElement("div");
+ e.className="confetti";
+ e.textContent=fx[Math.floor(Math.random()*fx.length)];
+ e.style.left=Math.random()*100+"vw";
+ e.style.animationDuration=4+Math.random()*4+"s";
+ document.body.appendChild(e);
+ setTimeout(()=>e.remove(),6000);
+}
+setInterval(rain,250);
+
+// Auto redirect to Page 2 after 5 seconds
+setTimeout(()=>{
+ window.location.href="password.html";  // <--- page 2 ka naam
+},5000);
+</script>
+
+</body>
+</html>
